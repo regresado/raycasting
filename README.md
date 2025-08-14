@@ -1,5 +1,7 @@
 # 🔷 Regreso for Raycast
 
+[![wakatime](https://wakatime.com/badge/user/7482ea9d-3085-4e9b-95ad-1ca78a14d948/project/de8e3865-61b8-47e9-8f80-dbc6224ca070.svg)](https://wakatime.com/badge/user/7482ea9d-3085-4e9b-95ad-1ca78a14d948/project/de8e3865-61b8-47e9-8f80-dbc6224ca070)
+
 Welcome to Regreso for Raycast. This README primarily serves to help other developers setup, run, and collaborate the Regreso Raycast extension!
 
 ## 👋 Introduction
