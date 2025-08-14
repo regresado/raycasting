@@ -30,14 +30,14 @@
         }
       ],
       "preferences": [
-				{
+        {
           "name": "ai-tagging",
-					"title": "Enable AI Tagging",
-					"description": "Enable AI-tagging for new destinations using your LLM instance.",
-					"type": "checkbox",
-					"required": true,
-					"default": false
-				},
+          "title": "AI Tagging",
+          "description": "Enable AI-tagging for new destinations using your LLM instance.",
+          "type": "checkbox",
+          "required": true,
+          "default": false
+        },
         {
           "name": "ai-instance",
           "title": "AI Instance URL",
@@ -91,7 +91,7 @@
   "dependencies": {
     "@raycast/api": "^1.101.1",
     "@raycast/utils": "^1.17.0",
-    "@regreso/utils": "^0.1.6"
+    "@regreso/utils": "^0.1.7"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.0.4",
