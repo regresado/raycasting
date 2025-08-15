@@ -53,7 +53,7 @@ The following configuration preferences can be set:
 - Password (mandatory): : If using session id auth, just write something random in this field.
 - Session ID (optional) Optional but overrides email/password fields in favor of a statically-provided session ID.
 
-## 🗺️ ROADMAP
+## 🗺️ Roadmap
 
 ### 📝 A note about auth
 
@@ -73,7 +73,8 @@ The most complicated thing about the Regreso Raycast extension is the need for s
     - [ ] Support browser bookmarks integrations
     - [ ] Support saving destination drafts
   - [x] Support listing/searching destinations
-    - [ ] List item details
+    - [x] List item details
+    - [ ] Hide details action (& preferences)
 
 - [ ] Support map commands
   - [ ] Support creating maps

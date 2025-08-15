@@ -1,9 +1,15 @@
 import { getPreferenceValues } from "@raycast/api";
 
-export async function fetchDestinations(searchText: string, offset: number, sessionToken: string): Promise<any> {
+export async function fetchDestinations(
+  searchText: string,
+  offset: number,
+  workspaceId: number | undefined,
+  sessionToken: string,
+): Promise<any> {
   const preferences = getPreferenceValues<Preferences>();
+
   const response = await fetch(
-    `${preferences["instance-url"]}/api/v1/destinations?searchString=${searchText}&offset=${offset}&limit=12&archived=false`,
+    `${preferences["instance-url"]}/api/v1/destinations?searchString=${searchText}&offset=${offset}&limit=10${workspaceId ? `&workspaceId=${workspaceId}` : ""}`,
     {
       method: "GET",
       headers: {

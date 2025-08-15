@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Icon, Action, ActionPanel, List, useNavigation } from "@raycast/api";
+import { Icon, Action, ActionPanel, List, useNavigation, showToast, Toast } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 
 import { fetchDestinations } from "./utils/destination";
+import { fetchWorkspaces } from "./utils/workspace";
 import { handleAuthStuff, setDefaultWorkspace } from "./utils/auth";
 import CreateDestination from "./create-destination";
 
@@ -10,6 +11,8 @@ export default function ListDestinations() {
   const [searchText, setSearchText] = useState("");
 
   const [sessionToken, setSessionToken] = useState<string>("");
+  const [workspaces, setWorkspaces] = useState<any[]>([]);
+  const [selectedWorkspace, setSelectedWorkspace] = useState<number | undefined>(undefined);
   const { push } = useNavigation();
 
   const { isLoading, data, pagination } = usePromise(
@@ -17,7 +20,8 @@ export default function ListDestinations() {
       if (!sessionToken || sessionToken == "") {
         return { data: [], hasMore: false };
       }
-      const newData = await fetchDestinations(searchText, options.page * 10, sessionToken);
+      const newData = await fetchDestinations(searchText, options.page * 10, selectedWorkspace, sessionToken);
+
       return {
         data: newData.items.map((it, i) => {
           it.page = options.page;
@@ -38,6 +42,8 @@ export default function ListDestinations() {
         setSearchText("e");
         await new Promise((r) => setTimeout(r, 100));
         setSearchText("");
+
+        setWorkspaces((await fetchWorkspaces(a.sessionToken)).items);
       })
       .catch((error) => {
         showToast({
@@ -55,10 +61,36 @@ export default function ListDestinations() {
       searchText={searchText}
       pagination={pagination}
       searchBarPlaceholder="Search for destinations..."
+      isShowingDetail
+      throttle
+      navigationTitle={data && data.length > 0 ? `List Destinations (${data.length})` : "List Destinations"}
       actions={
         <ActionPanel>
           <Action title="Create One" onAction={() => push(<CreateDestination />)} />
         </ActionPanel>
+      }
+      searchBarAccessory={
+        <List.Dropdown
+          tooltip="Trunks"
+          storeValue={true}
+          defaultValue="all"
+          onChange={(newValue) => {
+            if (newValue === "all") {
+              setSelectedWorkspace(undefined);
+            } else {
+              setSelectedWorkspace(parseInt(newValue));
+            }
+          }}
+        >
+          <List.Dropdown.Item title="All Trunks" value="all" />
+          {workspaces.map((workspace) => (
+            <List.Dropdown.Item
+              key={workspace.id}
+              title={(workspace.emoji ?? "🧰") + " " + workspace.name}
+              value={workspace.id.toString()}
+            />
+          ))}
+        </List.Dropdown>
       }
     >
       {data?.length === 0 ? (
@@ -69,6 +101,34 @@ export default function ListDestinations() {
             key={`${item.page} ${item.index} ${item.text}`}
             title={item.text}
             subtitle={item.type == "note" ? "Note" : item.location}
+            detail={
+              <List.Item.Detail
+                markdown={item.description}
+                metadata={
+                  <List.Item.Detail.Metadata>
+                    <List.Item.Detail.Metadata.Label title="Type" text={item.type} />
+                    {item.type == "location" ? (
+                      <List.Item.Detail.Metadata.Link title="Location" target={item.location} text={item.location} />
+                    ) : null}
+
+                    <List.Item.Detail.Metadata.TagList title="Trunk">
+                      <List.Item.Detail.Metadata.TagList.Item text={"🧰 " + item.workspace.name} />
+                    </List.Item.Detail.Metadata.TagList>
+
+                    <List.Item.Detail.Metadata.Separator />
+
+                    <List.Item.Detail.Metadata.TagList title="Tags">
+                      {item.tags.map((tag) => (
+                        <List.Item.Detail.Metadata.TagList.Item key={tag.id} text={tag.text} color={tag.color} />
+                      ))}
+                    </List.Item.Detail.Metadata.TagList>
+
+                    <List.Item.Detail.Metadata.Label title="Archived?" text={item.archived ? "Yes" : "No"} />
+                    <List.Item.Detail.Metadata.Separator />
+                  </List.Item.Detail.Metadata>
+                }
+              />
+            }
           />
         ))
       )}

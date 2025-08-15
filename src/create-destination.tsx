@@ -118,12 +118,14 @@ export default function CreateDestination(
                     destinationProps.workspaceId.value ?? defaultWorkspace.toString(),
                     sessionToken,
                   )
-                    .then(() => {
+                    .then(async () => {
                       showToast({
                         style: Toast.Style.Success,
                         title: "Success!",
                         message: "Destination created successfully",
                       });
+												await new Promise((r) => setTimeout(r, 500));
+												popToRoot();
                     })
                     .catch((error) => {
                       showToast({
@@ -132,7 +134,7 @@ export default function CreateDestination(
                         message: error.message,
                       });
                     });
-                  popToRoot();
+                 
                 }}
               />
             ) : null}
