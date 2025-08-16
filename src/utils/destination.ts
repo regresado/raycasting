@@ -47,8 +47,14 @@ export async function createDestination(
       body,
       type,
       location: url,
-      tags: tags.split(",").map((tag) => tag.trim()),
+      tags:
+        tags == undefined || tags == ""
+          ? []
+          : tags.split(",").map((tag) => {
+              return { text: tag.trim(), id: tag.trim() };
+            }),
       workspaceId: parseInt(workspaceId, 10),
+      attachments: [],
     }),
   }).then((res) => res.json());
 

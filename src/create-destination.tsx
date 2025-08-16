@@ -7,6 +7,7 @@ import { getWebDetails } from "@regreso/utils";
 
 import { handleAuthStuff } from "./utils/auth";
 import { createDestination } from "./utils/destination";
+import { fetchWorkspaces } from "./utils/workspace";
 
 interface DestinationTypeFormValues {
   type: string;
@@ -56,22 +57,36 @@ export default function CreateDestination(
     if (workspaces.length > 0 || sessionToken == "") {
       return;
     }
-
-    fetch(`${preferences["instance-url"]}/api/v1/workspaces?archived=false`, {
-      method: "GET",
-      headers: {
-        Authorization: sessionToken,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        return data.items.map((workspace: any) => {
-          return { name: workspace.name, id: workspace.id };
-        });
+    fetchWorkspaces(false, sessionToken)
+      .then((workspacesResponse) => {
+        if (!workspacesResponse || !workspacesResponse.items) {
+          showToast({
+            style: Toast.Style.Failure,
+            title: "Failed to fetch workspaces",
+            message: "Please check your network connection or try again later.",
+          });
+          return;
+        }
+        if (workspacesResponse.items.length === 0) {
+          showToast({
+            style: Toast.Style.Failure,
+            title: "No workspaces found",
+            message: "Please create a workspace before creating a destination.",
+          });
+          return;
+        }
+        setWorkspaces(
+          workspacesResponse.items.map((workspace: any) => {
+            return { name: workspace.name, id: workspace.id };
+          }),
+        );
       })
-      .then((its: Workspace[]) => {
-        setWorkspaces(its);
+      .catch((error) => {
+        showToast({
+          style: Toast.Style.Failure,
+          title: "Failed to fetch workspaces",
+          message: error.message,
+        });
       });
   }, [setWorkspaces, sessionToken]);
   const { title, url, trunk } = props.arguments ?? { title: "", url: "", trunk: undefined };
@@ -102,7 +117,7 @@ export default function CreateDestination(
         enableDrafts
         actions={
           <ActionPanel>
-            {(destinationProps.type.value == "note" && destinationProps.headline.value != "") ||
+            {(destinationTypeProps.type.value == "note" && destinationProps.headline.value != "") ||
             (destinationProps.type.value == "location" &&
               destinationProps.location.value != "" &&
               destinationProps.location.value != undefined) ? (
@@ -124,8 +139,8 @@ export default function CreateDestination(
                         title: "Success!",
                         message: "Destination created successfully",
                       });
-												await new Promise((r) => setTimeout(r, 500));
-												popToRoot();
+                      await new Promise((r) => setTimeout(r, 500));
+                      popToRoot();
                     })
                     .catch((error) => {
                       showToast({
@@ -134,7 +149,6 @@ export default function CreateDestination(
                         message: error.message,
                       });
                     });
-                 
                 }}
               />
             ) : null}

@@ -43,7 +43,7 @@ export default function ListDestinations() {
         await new Promise((r) => setTimeout(r, 100));
         setSearchText("");
 
-        setWorkspaces((await fetchWorkspaces(a.sessionToken)).items);
+        setWorkspaces((await fetchWorkspaces(undefined, a.sessionToken)).items);
       })
       .catch((error) => {
         showToast({
