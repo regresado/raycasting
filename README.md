@@ -19,14 +19,17 @@ This extension, obviously, but why? First off, Raycast is a super epic MacOS/Win
 
 ## 📺 Demo Video & Setup Tutorial
 
+
+https://github.com/user-attachments/assets/d10b786e-c00c-476f-9634-c253c732ee52
+
+
 ## 🚀 Usage
 
 To run this extension, simply:
 
 1. Clone this repository to your device using `git clone` and navigate (`cd`) into it, and run the `npm run dev` script,
-2. launch Raycast like usual and search for the "Regreso Login" command
-3. Fill in your regreso account email/password (you can create one [here](https://regreso.netlify.app/sign-up), but make sure to use email/password!) and submit.
-4. Start using Regreso for Raycast! You can use the commands described in
+2. Launch Raycast like usual (alt+space maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), provide your fill in your regreso account email/password (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings
+4. Start using Regreso for Raycast! You can use the commands described below or search "regreso" globally in Raycast.
 
 ## 🛠️ Developing
 
