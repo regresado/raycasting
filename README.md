@@ -4,36 +4,34 @@
 
 Welcome to Regreso for Raycast. This README primarily serves to help other developers setup, run, and collaborate the Regreso Raycast extension!
 
-## 👋 Introduction
+## 💬 Introduction
 
-Ever find yourself wanting to come back to an article, video, link, or manual at a later time but never actually doing it? (Regreso might be for you!) Or constantly having to launch the Regreso web [platform](https://regreso.netlify.app) everytime you find something amazing?
+Ever find yourself wanting to come back to an article, video, link, or manual at a later time but never actually doing it? (Regreso might be for you!) Or find yourself constantly having to launch the Regreso web [platform](https://regreso.netlify.app) every time you stumble across something amazing?
 
 ### 🤔 What's the Solution?
 
-This extension, obviously, but why? First off, Raycast is a super epic MacOS/Windows app that allows you to quickly execute commands to do things like launch apps, find files, perform simple calculations, translate text, etc from the comfort of a conveniently-shortcutted command palette. But this extension gives you the added power of **saving your links and richly-formatted notes**. Additionally, with features not supported on the Regreso platform (such as drafts), this extension will go farther to become an important client platform.
+This extension (obviously) but why? First off, Raycast is a super epic MacOS/Windows app that allows you to quickly execute commands to do things like launch apps, find files, perform simple calculations, translate text, etc from the comfort of a conveniently-shortcutted command palette. But this extension gives you the added power of **saving your links and richly-formatted notes**. Additionally, with planned features not supported on the Regreso platform (such as drafts), this extension will hopefully become an important platform client.
 
 ### 💪 Example Use Cases
 
 - You somehow ended up with 50 tabs generated from some niche rabbit-hole research on a topic and need to quickly organize them all into maps and workspaces.
-- You use multiple machines regularly and want to be able to access your saved resources across browsers or (without) a browser.
+- You use multiple machines regularly and want to be able to access your saved resources across browsers or (without) a browser at all.
 
 ## 📺 Demo Video & Setup Tutorial
 
-
 https://github.com/user-attachments/assets/d10b786e-c00c-476f-9634-c253c732ee52
-
 
 ## 🚀 Usage
 
 To run this extension, simply:
 
-1. Clone this repository to your device using `git clone` and navigate (`cd`) into it, and run the `npm run dev` script,
-2. Launch Raycast like usual (alt+space maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), provide your fill in your regreso account email/password (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings
+1. Clone this repository to your device using `git clone`, navigate (`cd`) into it, and run the `npm run dev` script,
+2. Launch Raycast like usual (alt+space maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), fill in your regreso account credentials (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings.
 4. Start using Regreso for Raycast! You can use the commands described below or search "regreso" globally in Raycast.
 
 ## 🛠️ Developing
 
-Some useful commands when developing this extension include:
+Some useful commands when using or developing the alpha version of this extension include:
 
 - `npm run dev` / `npm run build`
 - `npm run lint` / `npm run fix-lint`
@@ -48,15 +46,17 @@ A list of the current commands available in the extension.
 
 ## ⚙️ Configuration
 
-> [!IMPORTANT]
-> Only email/password account auth is fully supported by this client! Whilst GitHub login can be used through a session ID, obtained from session cookie, this will eventually expire and may eventually be deprecated from this extension.
-
 The following configuration preferences can be set:
 
 - Instance URL (optional), **Default: https://regreso.netlify.app**: If self-hosting Regreso, enter your instance's web address here.
 - Email (mandatory): If using session id auth, just write something random in this field.
 - Password (mandatory): : If using session id auth, just write something random in this field.
-- Session ID (optional) Optional but overrides email/password fields in favor of a statically-provided session ID.
+- Session ID (optional) Optional but overrides email/password fields in favor of a statically-provided session ID
+- Auto Tagging (under Create Destination: Docs coming soon...
+
+## 🐛 Bugs and Features
+
+If you find a bug with Regreso itself, file it under the main repo's [issues](https://github.com/matmanna/Regreso). Otherwise, for client-specific problems or suggestions, create an issue on this repository!
 
 ## 🗺️ Roadmap
 
