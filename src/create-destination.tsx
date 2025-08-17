@@ -90,12 +90,10 @@ export default function CreateDestination(
         });
       });
   }, [setWorkspaces, sessionToken]);
-  const { title, url, trunk } = props.arguments ?? { title: "", url: "", trunk: undefined };
-
   const { itemProps: destinationTypeProps } = useForm<DestinationTypeFormValues>({
     initialValues: props.draftValues || {
       type: "location",
-      location: url || "",
+      location: "",
     },
     onSubmit: () => {},
   });
@@ -103,11 +101,11 @@ export default function CreateDestination(
   const { itemProps: destinationProps } = useForm<DestinationFormValues>({
     initialValues: props.draftValues || {
       type: "location",
-      location: url || undefined,
-      headline: title || "",
+      location: undefined,
+      headline: "",
       body: "",
       tags: "",
-      workspaceId: trunk ?? defaultWorkspace ?? "0",
+      workspaceId: defaultWorkspace ?? "0",
     },
     onSubmit: () => {},
   });
