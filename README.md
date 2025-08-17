@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/d10b786e-c00c-476f-9634-c253c732ee52
 
 To run this extension, simply:
 
-1. Clone this repository to your device using `git clone`, navigate (`cd`) into it, and run the `npm run dev` script,
+1. Clone this repository to your device using `git clone`, navigate (`cd`) into it, install dependencies (`npm install`), and run the `npm run dev` script,
 2. Launch Raycast like usual (alt+space maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), fill in your regreso account credentials (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings.
 4. Start using Regreso for Raycast! You can use the commands described below or search "regreso" globally in Raycast.
 
@@ -59,10 +59,6 @@ The following configuration preferences can be set:
 If you find a bug with Regreso itself, file it under the main repo's [issues](https://github.com/matmanna/Regreso). Otherwise, for client-specific problems or suggestions, create an issue on this repository!
 
 ## 🗺️ Roadmap
-
-### 📝 A note about auth
-
-The most complicated thing about the Regreso Raycast extension is the need for secure, simple authentication. Because the extension doesn't just serve as an RSS-feed-reader but enables mutational procedures as well, caution is important.
 
 ### ☑️ TODOs
 
