@@ -36,6 +36,10 @@ To get started with this extension, follow these steps:
 3. **Open Raycast** like usual (`alt+space` maybe?) and **search for "Settings"**. In the Regreso settings menu (from the left sidebar), **fill in your account credentials** (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and **close settings**.
 4. **Start using Regreso for Raycast!** You can use the commands described below or search "regreso" globally in Raycast.
 
+### 🔃 Updating
+
+Instructions on updating from a previous version of the extension coming soon...
+
 ## ⌨️ Commands
 
 A list of the current commands available in the extension:
