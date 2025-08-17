@@ -28,24 +28,6 @@
           "placeholder": "Trunk ID",
           "type": "text"
         }
-      ],
-      "preferences": [
-        {
-          "name": "ai-tagging",
-          "title": "Enable AI Tagging",
-          "description": "Automatically tag new destinations using AI (requires AI Instance URL)",
-          "type": "checkbox",
-          "required": true,
-          "default": false
-        },
-        {
-          "name": "ai-instance",
-          "title": "AI Instance URL",
-          "description": "The URL of your LLM instance for AI-tagging",
-          "type": "textfield",
-          "required": false,
-          "placeholder": "https://ai.hackclub.com"
-        }
       ]
     },
     {
@@ -85,6 +67,22 @@
       "title": "Session Token",
       "description": "The session token for your Regreso account. If you have a session token, you can use it instead of email and password.",
       "type": "password"
+    },
+    {
+      "name": "ai-tagging",
+      "title": "Enable AI Tagging",
+      "description": "Automatically tag new destinations using AI (requires AI Instance URL)",
+      "type": "checkbox",
+      "required": true,
+      "default": false
+    },
+    {
+      "name": "ai-instance",
+      "title": "AI Instance URL",
+      "description": "The URL of your LLM instance for AI-tagging",
+      "type": "textfield",
+      "required": false,
+      "placeholder": "https://ai.hackclub.com"
     }
   ],
   "dependencies": {

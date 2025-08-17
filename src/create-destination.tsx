@@ -160,7 +160,6 @@ export default function CreateDestination(
               <Action
                 title="Generate Site Metadata"
                 onAction={async () => {
-
                   if (
                     destinationTypeProps.type.value == "location" &&
                     destinationTypeProps.location.value != destinationProps.location.value &&
