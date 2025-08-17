@@ -32,8 +32,8 @@
       "preferences": [
         {
           "name": "ai-tagging",
-          "title": "AI Tagging",
-          "description": "Enable AI-tagging for new destinations using your LLM instance.",
+          "title": "Enable AI Tagging",
+          "description": "Automatically tag new destinations using AI (requires AI Instance URL)",
           "type": "checkbox",
           "required": true,
           "default": false
@@ -44,8 +44,7 @@
           "description": "The URL of your LLM instance for AI-tagging",
           "type": "textfield",
           "required": false,
-          "placeholder": "https://ai.hackclub.com",
-          "default": "https://ai.hackclub.com"
+          "placeholder": "https://ai.hackclub.com"
         }
       ]
     },

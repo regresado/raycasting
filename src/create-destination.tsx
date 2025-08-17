@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Action, ActionPanel, Form, popToRoot, LaunchProps, Toast, showToast, getPreferenceValues } from "@raycast/api";
 import { useForm } from "@raycast/utils";
 
-import { getWebDetails } from "@regreso/utils";
+import { getWebDetails, SiteTagger } from "@regreso/utils";
 
 import { handleAuthStuff } from "./utils/auth";
 import { createDestination } from "./utils/destination";
@@ -32,6 +32,7 @@ export default function CreateDestination(
   props: LaunchProps<{ arguments: Arguments.CreateDestination; draftValues: DestinationFormValues }>,
 ) {
   const preferences = getPreferenceValues<Preferences>();
+
   const [sessionToken, setSessionToken] = useState<string>("");
   const [defaultWorkspace, setDefaultWorkspace] = useState<number>(0);
 
@@ -159,6 +160,7 @@ export default function CreateDestination(
               <Action
                 title="Generate Site Metadata"
                 onAction={async () => {
+
                   if (
                     destinationTypeProps.type.value == "location" &&
                     destinationTypeProps.location.value != destinationProps.location.value &&
@@ -177,6 +179,7 @@ export default function CreateDestination(
                       return;
                     }
                     destinationProps.type.onChange("location");
+
                     destinationProps.headline.onChange(
                       webDetails.title[0] ??
                         webDetails.title[1] ??
@@ -189,7 +192,37 @@ export default function CreateDestination(
                     );
                     destinationProps.location.onChange(webDetails.url);
                     destinationTypeProps.location.onChange(webDetails.url);
+
                     tagsInputRef.current?.focus();
+
+                    if (
+                      preferences["ai-tagging"] &&
+                      preferences["ai-instance"] != undefined &&
+                      preferences["ai-instance"] != ""
+                    ) {
+                      const tagger = new SiteTagger({
+                        maxTags: 3,
+
+                        aiInstance: preferences["ai-instance"],
+
+                        maxRetries: 2,
+                      });
+
+                      const result = await tagger.generateTags({
+                        url: destinationTypeProps.location.value,
+                        headline: destinationProps.headline.value,
+                        description: destinationProps.body.value,
+                      });
+                      if (result.success) {
+                        destinationProps.tags.onChange(result.tags.join(", "));
+                      } else {
+                        showToast({
+                          style: Toast.Style.Failure,
+                          title: "Failed to generate tags",
+                          message: "Error: " + result.error,
+                        });
+                      }
+                    }
                   }
                 }}
               />
