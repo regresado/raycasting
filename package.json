@@ -98,6 +98,9 @@
     "prettier": "^3.5.3",
     "typescript": "^5.8.2"
   },
+  "platforms": [
+    "Windows"
+  ],
   "scripts": {
     "build": "ray build",
     "dev": "ray develop",

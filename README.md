@@ -17,25 +17,20 @@ This extension (obviously) but why? First off, Raycast is a super epic MacOS/Win
 - You somehow ended up with 50 tabs generated from some niche rabbit-hole research on a topic and need to quickly organize them all into maps and workspaces.
 - You use multiple machines regularly and want to be able to access your saved resources across browsers or (without) a browser at all.
 
-## 📺 Demo Video & Setup Tutorial
+## 📺 Demo & Setup Video
+
+> [!WARNING]
+> This extension is only tested on Windows but should work cross-platform. Feel free to try on MacOS and if you encounter any problems, file an issue!
 
 https://github.com/user-attachments/assets/d10b786e-c00c-476f-9634-c253c732ee52
 
-## 🚀 Usage
+## 🚀 Getting Started
 
 To run this extension, simply:
 
 1. Clone this repository to your device using `git clone`, navigate (`cd`) into it, install dependencies (`npm install`), and run the `npm run dev` script,
 2. Launch Raycast like usual (alt+space maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), fill in your regreso account credentials (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings.
-4. Start using Regreso for Raycast! You can use the commands described below or search "regreso" globally in Raycast.
-
-## 🛠️ Developing
-
-Some useful commands when using or developing the alpha version of this extension include:
-
-- `npm run dev` / `npm run build`
-- `npm run lint` / `npm run fix-lint`
-- `npm run release`
+3. Start using Regreso for Raycast! You can use the commands described below or search "regreso" globally in Raycast.
 
 ## ⌨️ Commands
 
@@ -52,7 +47,7 @@ The following configuration preferences can be set:
 - Email (mandatory): If using session id auth, just write something random in this field.
 - Password (mandatory): : If using session id auth, just write something random in this field.
 - Session ID (optional) Optional but overrides email/password fields in favor of a statically-provided session ID
-- Auto Tagging (under Create Destination: Docs coming soon...
+- Auto Tagging (under Create Destination): Disabled by default, you can provide an AI api url (more specifications coming soon) which will be used to generate destination tags.
 
 ## 🐛 Bugs and Features
 
