@@ -28,9 +28,13 @@ https://github.com/user-attachments/assets/d10b786e-c00c-476f-9634-c253c732ee52
 
 To run this extension, simply:
 
-1. Clone this repository to your device using `git clone`, navigate (`cd`) into it, install dependencies (`npm install`), and run the `npm run dev` script,
-2. Launch Raycast like usual (alt+space maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), fill in your regreso account credentials (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings.
+1. Clone this repository to your device using `git clone`, navigate (`cd`) into it, install dependencies (`npm install`), run the `npm run dev` script, and once it's running, press `Ctrl+C` to stop the dev command (extension will stay installed).
+2. Launch Raycast like usual (`alt+space` maybe?) and search for "Settings". Inside of the Regreso settings menu (from the sidebar), fill in your regreso account credentials (you can create one by signing up with email/password [here](https://regreso.netlify.app/sign-up)) and close settings.
 3. Start using Regreso for Raycast! You can use the commands described below or search "regreso" globally in Raycast.
+
+### 🔃 Updating
+
+Instructions on updating coming soon...
 
 ## ⌨️ Commands
 
